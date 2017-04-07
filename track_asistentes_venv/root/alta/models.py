@@ -10,6 +10,12 @@ from __future__ import unicode_literals
 from django.db import models
 
 
+
+
+
+
+
+
 class ConsejeroEvento(models.Model):
     id_consejero = models.ForeignKey('Consejeros', models.DO_NOTHING, db_column='id_consejero', blank=True, null=True)
     numero_evento = models.ForeignKey('Evento', models.DO_NOTHING, db_column='numero_evento', blank=True, null=True)

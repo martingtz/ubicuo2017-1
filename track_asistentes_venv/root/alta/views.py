@@ -49,6 +49,8 @@ def alta_form(request):
 					return HttpResponse("Tipo de imagen no admitido")
 				## Get FileSystemStorage instance
 				fs = FileSystemStorage()
+
+				fs.delete(dictionary_post_values['id']+"."+ext)
 				## Save the file in the media folder with id by name
 				image_name = fs.save(dictionary_post_values['id']+"."+ext, image_uploaded)
 				## Get path from file uploaded
