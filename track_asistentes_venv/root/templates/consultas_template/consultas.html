@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Asistente</title>
+</head>
+<body>
+<h2>Asistente</h2>
+<form method="post" action="">
+ {% csrf_token %} 
+ <input type="text" name='rfid' placeholder="RFID"> </input>
+    <button type="submit" name='submit-form1' > Buscar</button>
+</form>
+</br>
+</br>
+<form method="post" action="">
+    <table>
+        <tr>
+            <td>Id:</td>
+            <td><strong>{{ id }}</strong></td>
+        </tr>
+        <tr>
+            <td>Nombre:</td>
+            <td><strong>{{ nombre }}</strong></td>
+        </tr>
+        <tr>
+            <td>Facultad</td>
+            <td><strong>{{ facultad }}</strong></td>
+        </tr>
+
+         <tr>
+            <td>Cargo</td>
+            <td><strong>{{ cargo }}</strong></td>
+        </tr>
+
+         <tr>
+            <td>Suplente</td>
+            <td><strong>{{ suplente }}</strong></td>
+        </tr>
+    </table>
+<img src="/{{ image_path }}" alt="No image found" height="300" width="300">
+</form>
+</body>
+</html>

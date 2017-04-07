@@ -1,0 +1,48 @@
+body {
+width : 900px;
+margin: 0 auto;
+padding : 0px;
+font-family: Georgia, "Times New Roman", serif;
+color: black;
+
+
+}
+
+h1 {
+font-family: Helvetica, Geneva, Arial, sans-serif;
+}
+
+label {
+	padding: 15px;
+	margin: 5px;
+	display:block;
+	border-style: outset; 
+	border-width: 1px;
+}
+
+
+#contenedor {
+  width: 700px;
+  margin: 0 auto;
+}
+.class0 {
+	overflow: hidden;
+	padding: 5px;
+	border-style: outset; 
+	border-width: 1px;
+	background-color: #fafafa;
+}
+
+.class1 {
+	float: left;
+	height: 300px;
+	width: 300px;
+	text-align:center:
+	padding: 25px;
+    margin: 5px;
+	border-style: outset; 
+	border-width: 1px;
+	background-color: #fafafa;
+
+
+}
