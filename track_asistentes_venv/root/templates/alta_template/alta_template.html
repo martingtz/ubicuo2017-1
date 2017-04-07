@@ -1,0 +1,72 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="es">
+<html>
+	<head>
+		<title>Assistants Tracker</title><!--Titulo de mi web-->
+    <meta charset="utf-8" />
+	</head>
+	
+	<body>
+  <a href="{% url 'consulta:consulta' %}">ir a consultas</a>
+  <a href="{% url 'login:logout' %}">Salir</a>
+  <br>
+                <h3 class="center-block">Alta Manual</h3>
+                <form action="" method="post" accept-charset="utf-8" enctype="multipart/form-data">
+                {% csrf_token %} 
+                <div>
+                     <input id="rfid" name="rfid" type="text" aria-label="..." placeholder="RFID">
+                    </div><!-- /input-group -->
+                     <br>
+                    <div>
+                        <input id="id" name="id" type="text" aria-label="..." placeholder="ID">
+                    </div><!-- /input-group -->
+                    <br>
+
+                  
+                    <div>
+                        <input id="name" name="name" type="text" aria-label="..." placeholder="Nombre">
+                    </div><!-- /input-group -->
+                    <br>
+                    <div>
+                        <input id="facultad" name="facultad" type="text"  aria-label="..." placeholder="Facultad">
+                    </div><!-- /input-group -->
+                    <br>
+
+
+
+                  Cargo:<br>
+                  <input type="radio" name="cargo" value="maestro" checked> Maestro<br>
+                  <input type="radio" name="cargo" value="alumno"> Alumno<br>
+                  <input type="radio" name="cargo" value="director"> Director<br>
+
+                <br>
+                 <input type="hidden" name="suplente" value="false">
+                  <input type="checkbox" name="suplente" value="true"> Suplente <br>
+
+
+
+                <h3>Selección de Imagen:</h3>
+                    <input type="file" name="imageToUpload" id="imageToUpload">
+                    <br>
+ 
+                    <button type="submit" name='submit-form1' class="btn btn-primary center-block"> Submit</button>
+                </form>
+     
+
+
+                <form action="" method="post" enctype="multipart/form-data">
+                    {% csrf_token %} 
+                    <h3 >Selección de archivo:</h3>
+                    <input type="file" name="fileToUpload" id="fileToUpload">
+                    <br>
+                    <input name='submit-form2' type="submit" value="↑ Upload Doc" name="submit">
+                </form>
+
+
+ 
+
+              
+
+	</body>
+</html>

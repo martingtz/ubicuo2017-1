@@ -5,6 +5,9 @@
     <title>Asistente</title>
 </head>
 <body>
+<a href="{% url 'alta:alta' %}">ir a altas</a>
+<a href="{% url 'login:logout' %}">Salir</a>
+<br>
 <h2>Asistente</h2>
 <form method="post" action="">
  {% csrf_token %} 
@@ -35,10 +38,18 @@
 
          <tr>
             <td>Suplente</td>
-            <td><strong>{{ suplente }}</strong></td>
+            <td><strong>
+            {% if suplente == 1 %}
+            Si 
+            {% endif %}
+            {% if suplente == 0 %}
+             No 
+            {% endif %}
+
+            </strong></td>
         </tr>
     </table>
-<img src="/{{ image_path }}" alt="No image found" height="300" width="300">
+    <img src= "/{{ image_path }}" alt="Imagen" height="300" width="300">
 </form>
 </body>
 </html>

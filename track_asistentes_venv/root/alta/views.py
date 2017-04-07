@@ -7,8 +7,8 @@ from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.core.exceptions import ObjectDoesNotExist
 from io import BytesIO
-from json_rest.models import Consejeros
-from json_rest.models import Rfid
+from alta.models import Consejeros
+from alta.models import Rfid
 from django.core.files.storage import FileSystemStorage
 from django.core import serializers
 from django.contrib.auth.decorators import login_required
@@ -20,18 +20,17 @@ def alta_form(request):
 	if request.method == "POST":
 		## extensions admited for images
 		image_ext =['jpg','png']
-		
 		try:
 			## Check from what form comes the request
 			if 'submit-form1' in request.POST:
 				# Store all request POST fields in a dictionary
 				dictionary_post_values = {}
-				dictionary_post_values['rfid'] = request.POST['rfid'];
-				dictionary_post_values['id'] = request.POST['id'];
-				dictionary_post_values['nombre'] = request.POST['name'];
-				dictionary_post_values['facultad'] = request.POST['facultad'];
-				dictionary_post_values['cargo'] = request.POST['cargo'];
-				dictionary_post_values['suplente'] = request.POST['suplente'];
+				dictionary_post_values['rfid'] = request.POST.get('rfid');
+				dictionary_post_values['id'] = request.POST.get('id');
+				dictionary_post_values['nombre'] = request.POST.get('name');
+				dictionary_post_values['facultad'] = request.POST.get('facultad');
+				dictionary_post_values['cargo'] = request.POST.get('cargo');
+				dictionary_post_values['suplente'] = request.POST.get('suplente');
 				dictionary_post_values['image_path'] = request.FILES.get('imageToUpload');
 
 				print dictionary_post_values
@@ -58,7 +57,7 @@ def alta_form(request):
 				dictionary_post_values['image_path'] = "."+uploaded_image_url;
 				## Save in bd
 				is_suplente = True
-				if dictionary_post_values['facultad'] == 'no':
+				if dictionary_post_values['suplente'] == 'false':
 					is_suplente = False
 
 				## Save consejero created with the values of form in database 
@@ -69,6 +68,7 @@ def alta_form(request):
 				## Save rfid from form and the instance , to create a link between both of them
 				rfid = Rfid(id_rfid=dictionary_post_values['rfid'], id_consejero=consejero_instance)
 				rfid.save()
+				return HttpResponse('Asistente guardado exitosamente')
 		except ValueError as v:
 			print v
 			return HttpResponse("Uno de los campos tiene caracteres no permitidos")
@@ -84,4 +84,4 @@ def alta_form(request):
 			else:
 				return HttpResponse("Formato no valido, solo se aceptan .txt")
 
-	return render(request,'alta_template/alta.html')
+	return render(request,'alta_template/alta_template.html')

@@ -25,7 +25,7 @@ urlpatterns = [
     url(r'^', include('login.urls', namespace="login")),
     url(r'^', include('alta.urls', namespace="alta")),
     url(r'^', include('json_rest.urls', namespace="json")),
-    url(r'^', include('consultas.urls', namespace="consultas")),
+    url(r'^', include('consultas.urls', namespace="consulta")),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

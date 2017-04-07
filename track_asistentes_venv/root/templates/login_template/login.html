@@ -4,29 +4,18 @@
 <html>
 <head>
     <title>Login Page</title>
-    <link rel="stylesheet" href="{% static 'login_static_files/css/login_style.css' %}">
-    <link rel="stylesheet" href="{% static 'login_static_files/css/login_fonts.css' %}">
+
 </head>
 <body>
 
 {% block content %}
-<div class="main-div" >
-          <div class="modal-dialog">
-                <div class="loginmodal-container">
-                    <h1>Login to Your Account</h1><br>
+
+                  <h1>Login to Your Account</h1><br>
                   <form method="POST" action="" enctype="multipart/form-data">{% csrf_token %}
                     <input type="text" name="username" placeholder="Username">
                     <input type="password" name="password" placeholder="Password">
                     <input type="submit" name="login" class="login loginmodal-submit" value="Login">
                   </form>
-                    
-                  <div class="login-help">
-                    <a href="#"></a> - <a href="#"></a>
-                  </div>
-                </div>
-            </div>
-          </div>
-
            {% if forms.errors %}
             <p>
                 correct some stuff
