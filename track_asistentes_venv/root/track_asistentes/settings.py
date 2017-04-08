@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 import os
 from django.core.urlresolvers import reverse_lazy
 import django.contrib.auth
-
+from django.contrib.messages import constants as messages
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -39,10 +39,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'login',
-    'alta',
-    'consultas',
-    'json_rest'
+    'login_app',
+    'altas_app',
+    'consultas_app',
+    'json_rest_app',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
@@ -135,8 +136,16 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
-LOGIN_URL = '/'
-LOGIN_REDIRECT_URL = 'alta:alta'
+LOGIN_URL = 'login_app:login_page'
+LOGIN_REDIRECT_URL = 'altas_app:altas_page'
 
 # Close the session when user closes the browser
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
+MESSAGE_TAGS = {
+    messages.DEBUG: 'alert-info',
+    messages.INFO: 'alert-info',
+    messages.SUCCESS: 'alert-success',
+    messages.WARNING: 'alert-warning',
+    messages.ERROR: 'alert-danger',
+}

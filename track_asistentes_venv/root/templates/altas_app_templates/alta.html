@@ -1,0 +1,61 @@
+
+
+{% extends 'base.html' %}
+{% block content %}
+<div class="col-md-4 col-md-offset-4">
+                <h3 class="center-block">Alta Manual</h3>
+                <form action="" method="post" accept-charset="utf-8" enctype="multipart/form-data">
+                {% csrf_token %} 
+                <div>
+                     <input id="rfid" name="rfid" type="text" aria-label="..." placeholder="RFID" required>
+                    </div><!-- /input-group -->
+                     <br>
+                    <div>
+                        <input id="id" name="id" type="text" aria-label="..." placeholder="ID" required>
+                    </div><!-- /input-group -->
+                    <br>
+
+                  
+                    <div>
+                        <input id="name" name="name" type="text" aria-label="..." placeholder="Nombre" required>
+                    </div><!-- /input-group -->
+                    <br>
+                    <div>
+                        <input id="facultad" name="facultad" type="text"  aria-label="..." placeholder="Facultad" required>
+                    </div><!-- /input-group -->
+                    <br>
+
+
+
+                  Cargo:<br>
+                  <input type="radio" name="cargo" value="maestro" checked> Maestro<br>
+                  <input type="radio" name="cargo" value="alumno"> Alumno<br>
+                  <input type="radio" name="cargo" value="director"> Director<br>
+
+                <br>
+                 <input type="hidden" name="suplente" value="false">
+                  <input type="checkbox" name="suplente" value="true"> Suplente <br>
+
+
+
+                <h3>Selección de Imagen:</h3>
+                    <input type="file" name="imageToUpload" id="imageToUpload"required>
+                    <br>
+ 
+                <input name='submit-form1' type="submit" value="Register" name="submit" required>
+                </form>
+     
+
+
+                <form action="" method="post" enctype="multipart/form-data">
+                    {% csrf_token %} 
+                    <h3 >Selección de archivo:</h3>
+                    <input type="file" name="fileToUpload" id="fileToUpload">
+                    <br>
+                    <input name='submit-form2' type="submit" value="↑ Upload Doc" name="submit" required>
+                </form>
+</div>
+{% endblock %}
+ 
+
+              

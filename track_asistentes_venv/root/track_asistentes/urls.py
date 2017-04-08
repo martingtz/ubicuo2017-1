@@ -22,10 +22,10 @@ from django.conf.urls.static import static
 app_name='login'
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^', include('login.urls', namespace="login")),
-    url(r'^', include('alta.urls', namespace="alta")),
-    url(r'^', include('json_rest.urls', namespace="json")),
-    url(r'^', include('consultas.urls', namespace="consulta")),
+    url(r'^', include('altas_app.urls', namespace="altas_app")),
+    url(r'^', include('json_rest_app.urls', namespace="json_rest_app")),
+    url(r'^', include('consultas_app.urls', namespace="consultas_app")),
+    url(r'^', include('login_app.urls', namespace="login_app")),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
